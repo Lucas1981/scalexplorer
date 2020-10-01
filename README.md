@@ -14,4 +14,4 @@ Scale	C Db Eb F Gb Ab Bb C	is mode	7	of	Db Eb F Gb Ab Bb C Db
 
 ## Run it
 
-Clone this repository, go to the `vue` folder and run `npm run serve`. If you want to play around with the basic ideas in Node, you can use what is in `./basic`
+Clone this repository, go to the `vue` folder and run `npm i; npm run serve`. If you want to play around with the basic ideas in Node, you can use what is in `./basic`

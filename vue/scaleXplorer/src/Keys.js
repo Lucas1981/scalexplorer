@@ -32,38 +32,18 @@ const majorKeys = [
 export default class Keys {
   constructor() {}
 
-  hasFlats(key) {
-    for (let i = 0; i < key.length; i++) {
-      if (key[i].includes(flat)) return true;
-    }
-    return false;
-  }
-
-  hasSharps(key) {
-    for (let i = 0; i < key.length; i++) {
-      if (key[i].includes(sharp)) return true;
-    }
-    return false;
-  }
-
+  hasFlats(key) { return key.some(note => note.includes(flat)); }
+  hasSharps(key) { return key.some(note => note.includes(sharp)); }
   getMajorKeys() { return majorKeys; }
   getSteps() { return steps; }
-
-  getKeyFromNote(note) {
-    let key = null;
-    for(let i = 0; i < majorKeys.length; i++) {
-      if (majorKeys[i][0] === note) return majorKeys[i];
-    }
-    throw new Error(`Couldn't find key ${note}`);
-  }
+  getKeyFromNote(note) { return majorKeys.find(key => key[0] === note); }
+  scaleAsOutput(scale) { return scale.join(' '); }
 
   hasDuplicateKeys(scale) {
     let modifiedScale = scale
       .join('')
       .replace(/#/g, '')
       .replace(/b/, '');
-
-    // console.log(modifiedScale);
 
     for (let i = 1; i < modifiedScale.length; i++) {
       if (modifiedScale.charAt(i) === modifiedScale.charAt(i - 1)) {
@@ -73,8 +53,6 @@ export default class Keys {
 
     return false;
   }
-
-  scaleAsOutput(scale) { return scale.join(' '); }
 
   constructMode(key, mode = 0) {
     const sharpScale = [];

@@ -1,43 +1,41 @@
 <template>
   <div id="app">
-    <h1>scaleXplorer</h1>
-    <select
-      v-model="scale"
-    >
-      <option
-        v-for="key of scales"
-        :key="key"
-        :value="key"
-      >
-        {{ key }}
-      </option>
-    </select>
-    <table>
-      <tr
-        v-if="output !== null"
-        v-for="record of output"
-        :key="record.index"
-      >
-        <td>
-          Scale
-        </td>
-        <td>
-          {{ record.scale }}
-        </td>
-        <td>
-          is mode
-        </td>
-        <td>
-          {{ record.index + 1 }}
-        </td>
-        <td>
-          of
-        </td>
-        <td>
-          {{ record.original }}
-        </td>
-      </tr>
-    </table>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+      <a class="navbar-brand" href="#">scaleXplorer</a>
+    </nav>
+    <div class="container">
+      <p>
+        Select a scale:
+        <select
+          v-model="scale"
+        >
+          <option
+            v-for="key of scales"
+            :key="key"
+            :value="key"
+          >
+            {{ key }}
+          </option>
+        </select>
+      </p>
+      <table class="table">
+        <tr
+          v-if="output !== null"
+          v-for="record of output"
+          :key="record.index"
+        >
+          <td>
+            Scale {{ record.scale }}
+          </td>
+          <td>
+            is mode {{ record.index + 1 }} of
+          </td>
+          <td>
+            {{ record.original }}
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
 </template>
 
